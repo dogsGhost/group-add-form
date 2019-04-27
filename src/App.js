@@ -40,10 +40,11 @@ class App extends React.Component {
     const len = this.state.rowData.length
 
     if (val < len) {
-      // TODO: alert user we need to remove rows!
-      this.setState({
-        rowData: this.state.rowData.filter((row, i) => i < val)
-      })
+       if (window.confirm(`caution: this will remove ${len - val} row(s)!`)) {
+         this.setState({
+           rowData: this.state.rowData.filter((row, i) => i < val)
+         })
+       }
     } else {
       let diff = val - len
       let newRows = []

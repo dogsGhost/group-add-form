@@ -1,3 +1,7 @@
+label {
+  cursor: pointer;
+}
+
 .person-row.even {
   background: #eee;
 }
