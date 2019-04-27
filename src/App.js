@@ -8,6 +8,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.optionsCount = 50
+    this.textarea = React.createRef()
     this.genId = function () {
       return Math.random().toString().substr(2, 15)
     }
@@ -26,11 +27,12 @@ class App extends React.Component {
       showRows: true,
     }
 
-    this.toggleView = this.toggleView.bind(this)
-    this.onInputChange = this.onInputChange.bind(this)
+    this.addPeople = this.addPeople.bind(this)
     this.addPerson = this.addPerson.bind(this)
     this.changeRowCount = this.changeRowCount.bind(this)
+    this.onInputChange = this.onInputChange.bind(this)
     this.removeRow = this.removeRow.bind(this)
+    this.toggleView = this.toggleView.bind(this)
   }
 
   changeRowCount(e) {
@@ -114,6 +116,20 @@ class App extends React.Component {
     })
   }
 
+  addPeople() {
+    const val = this.textarea.current.value
+    const split = val.indexOf('	') > -1 ? '	' : ' '
+    let entries = val.split('\n').map(p => p.split(split))
+    // remove arrays of all empty values
+    entries = entries.filter(entry => entry[0] || entry[1] || entry[2])
+    entries = entries.map(entry => this.makeEntry(entry[0], entry[1], entry[2]))
+
+    this.setState({
+      rowData: entries,
+      showRows: true
+    })
+  }
+
   render() {
     return (
       <div className="container-fluid">
@@ -125,7 +141,7 @@ class App extends React.Component {
               toggleView={this.toggleView}>
               {this.makeRows()}
             </ScreenRows> :
-            <ScreenPaste />
+            <ScreenPaste textarea={this.textarea} toggle={this.toggleView} add={this.addPeople} />
         }
       </div>
     );

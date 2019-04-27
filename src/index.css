@@ -5,3 +5,9 @@
 .person-row.even {
   background: #eee;
 }
+
+.peopleTextarea {
+  display: block;
+  width: 100%;
+  height: 15rem;
+}
