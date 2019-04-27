@@ -1,7 +1,7 @@
 import React from 'react'
 
 function PersonRow({ person, count, remove, change }) {
-  const classes = `person-row form-row ${(count + 1) % 2 ? 'odd' : 'even'}`
+  const classes = `pt-1 person-row form-row ${(count + 1) % 2 ? 'odd' : 'even'}`
   return (
     <div className={classes}>
       <div className="col form-group">

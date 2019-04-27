@@ -6,8 +6,10 @@ function ScreenPaste(props) {
     <div className="row">
       <div className="col-md-6">
         <textarea ref={props.textarea} className="peopleTextarea" placeholder="Paste from spreadsheet here"></textarea>
-        <button className="btn btn-primary" onClick={props.add}>Add People</button>
-        <button className="btn btn-secondary" onClick={props.toggle}>Cancel</button>
+        <div className="pt-1">
+          <button className="btn btn-primary mr-1" onClick={props.add}>Add People</button>
+          <button className="btn btn-secondary" onClick={props.toggle}>Cancel</button>
+        </div>
       </div>
     </div>
   )

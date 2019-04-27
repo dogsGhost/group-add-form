@@ -10,7 +10,7 @@ function Select(props) {
   }
 
   return (
-    <select value={props.active} onChange={props.change}>
+    <select className="mr-2" value={props.active} onChange={props.change}>
       {options()}
     </select>
   )

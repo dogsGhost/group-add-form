@@ -5,12 +5,12 @@ function ScreenRows(props) {
   return (
     <div>
       <div>
-        person count
+        <span className="mr-2">person count</span>
         {props.select}
         <button className="btn btn-info" onClick={props.toggleView}>Paste from spreadsheet</button>
       </div>
-      <div>{props.children}</div>
-      <button className="btn btn-secondary" onClick={props.addPerson}>+ Add Person</button>
+      {props.children}
+      <button className="btn btn-secondary mt-2" onClick={props.addPerson}>+ Add Person</button>
     </div>
   )
 }

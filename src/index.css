@@ -1,7 +1,3 @@
-.person-row {
-  padding: 0.5rem 0 0;
-}
-
 .person-row.even {
   background: #eee;
 }

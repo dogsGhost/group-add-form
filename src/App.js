@@ -132,7 +132,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container-fluid p-4">
         {
           this.state.showRows ?
             <ScreenRows
