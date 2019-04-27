@@ -123,6 +123,7 @@ class App extends React.Component {
     // remove arrays of all empty values
     entries = entries.filter(entry => entry[0] || entry[1] || entry[2])
     entries = entries.map(entry => this.makeEntry(entry[0], entry[1], entry[2]))
+    entries = entries.length ? entries : [this.makeEntry()]
 
     this.setState({
       rowData: entries,
