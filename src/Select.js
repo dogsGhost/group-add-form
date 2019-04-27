@@ -3,7 +3,7 @@ import React from 'react'
 function Select(props) {
   function options() {
     let o = []
-    for (let i = 0; i <= props.count; i++) {
+    for (let i = 1; i <= props.count; i++) {
       o.push(<option key={i} value={i}>{i}</option>)
     }
     return o

@@ -2,6 +2,7 @@ import React from 'react';
 import ScreenRows from './ScreenRows'
 import ScreenPaste from './ScreenPaste'
 import Select from './Select'
+import PersonRow from './PersonRow'
 
 class App extends React.Component {
   constructor(props) {
@@ -11,10 +12,10 @@ class App extends React.Component {
       return Math.random().toString().substr(2, 15)
     }
 
-    this.makeEntry = function (first = '', last = '', email = '') {
+    this.makeEntry = function (fname = '', lname = '', email = '') {
       return {
-        first,
-        last,
+        fname,
+        lname,
         email,
         id: this.genId()
       }
@@ -26,8 +27,10 @@ class App extends React.Component {
     }
 
     this.toggleView = this.toggleView.bind(this)
+    this.onInputChange = this.onInputChange.bind(this)
     this.addPerson = this.addPerson.bind(this)
     this.changeRowCount = this.changeRowCount.bind(this)
+    this.removeRow = this.removeRow.bind(this)
   }
 
   changeRowCount(e) {
@@ -76,6 +79,28 @@ class App extends React.Component {
     })
   }
 
+  makeRows() {
+    return this.state.rowData.map((row, i) => {
+      return <PersonRow
+        change={this.onInputChange}
+        count={i}
+        key={row.id}
+        person={row}
+        remove={this.removeRow} />
+    })
+  }
+
+  removeRow(e) {
+    this.setState({
+      rowData: this.state.rowData.filter(row => row.id !== e.target.dataset.id)
+    })
+  }
+
+  onInputChange(e) {
+    // TODO
+    console.log(e)
+  }
+
   render() {
     return (
       <div className="container-fluid">
@@ -85,7 +110,7 @@ class App extends React.Component {
               select={<Select change={this.changeRowCount} count={this.optionsCount} active={this.state.rowData.length} />}
               addPerson={this.addPerson}
               toggleView={this.toggleView}>
-
+              {this.makeRows()}
             </ScreenRows> :
             <ScreenPaste />
         }
