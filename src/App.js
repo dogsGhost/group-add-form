@@ -96,9 +96,22 @@ class App extends React.Component {
     })
   }
 
-  onInputChange(e) {
-    // TODO
-    console.log(e)
+  onInputChange({ target }) {
+    const val = target.value
+    const prop = target.id.match(/[a-z]+/g)[0]
+    const id = target.id.match(/[0-9]+/g)[0]
+    let filtered = this.state.rowData.filter(row => row.id !== id)
+    let updatedIndex = -1
+    let updated = this.state.rowData.filter((row, i) => {
+      if (row.id === id) updatedIndex = i
+      return row.id === id
+    })
+    updated = Object.assign({}, updated[0], { [prop]: val })
+    filtered.splice(updatedIndex, 0, updated)
+
+    this.setState({
+      rowData: filtered
+    })
   }
 
   render() {
