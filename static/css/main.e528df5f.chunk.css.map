@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA,MACE,cACF,CAEA,iBACE,eACF,CAEA,gBACE,aAAc,CACd,UAAW,CACX,YACF","file":"main.e528df5f.chunk.css","sourcesContent":["label {\n  cursor: pointer;\n}\n\n.person-row.even {\n  background: #eee;\n}\n\n.peopleTextarea {\n  display: block;\n  width: 100%;\n  height: 15rem;\n}"]}
