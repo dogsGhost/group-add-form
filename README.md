@@ -1,3 +1,23 @@
+The textarea shown after selecting "paste from spreadsheet" supports input three different ways:
+
+Pasted text copied from spreadsheet (gsheet/excel)
+```
+John	Doe	john@email.com
+Jane	Doe	jane@email.com
+```
+Pasted text copied from CVS file
+```
+John,Doe,john@email.com
+Jane,Doe,jane@email.com
+```
+Typed in manually (single space between first/last/email)
+```
+John Doe john@email.com
+Jane Doe jane@email.com
+```
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
