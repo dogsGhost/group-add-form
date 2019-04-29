@@ -1,6 +1,6 @@
 import React from 'react'
 
-function PersonRow({ person, count, remove, change }) {
+const PersonRow = React.memo(function PersonRow({ person, count, remove, change }) {
   const classes = `pt-1 person-row form-row ${(count + 1) % 2 ? 'odd' : 'even'}`
   return (
     <div className={classes}>
@@ -25,6 +25,6 @@ function PersonRow({ person, count, remove, change }) {
       </div>
     </div>
   )
-}
+})
 
 export default PersonRow

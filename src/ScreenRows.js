@@ -1,7 +1,6 @@
 import React from 'react'
 
-function ScreenRows(props) {
-
+const ScreenRows = React.memo(function ScreenRows(props) {
   return (
     <div>
       <div>
@@ -13,6 +12,6 @@ function ScreenRows(props) {
       <button className="btn btn-secondary mt-2" onClick={props.addPerson}>+ Add Person</button>
     </div>
   )
-}
+})
 
 export default ScreenRows

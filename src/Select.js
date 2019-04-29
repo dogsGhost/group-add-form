@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Select(props) {
+const Select = React.memo(function Select(props) {
   function options() {
     let o = []
     for (let i = 1; i <= props.count; i++) {
@@ -14,6 +14,6 @@ function Select(props) {
       {options()}
     </select>
   )
-}
+})
 
 export default Select
