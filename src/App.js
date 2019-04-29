@@ -1,8 +1,8 @@
 import React from 'react';
-import ScreenRows from './ScreenRows'
-import ScreenPaste from './ScreenPaste'
-import Select from './Select'
 import PersonRow from './PersonRow'
+import ScreenPaste from './ScreenPaste'
+import ScreenRows from './ScreenRows'
+import Select from './Select'
 
 class App extends React.Component {
   constructor(props) {
@@ -35,16 +35,37 @@ class App extends React.Component {
     this.toggleView = this.toggleView.bind(this)
   }
 
+  addPeople() {
+    const val = this.textarea.current.value
+    const split = val.indexOf('	') > -1 ? '	' : val.indexOf(',') > -1 ? ',' : ' '
+    let entries = val.split('\n').map(p => p.split(split))
+    // remove arrays of all empty values
+    entries = entries.filter(entry => entry[0] || entry[1] || entry[2])
+    entries = entries.map(entry => this.makeEntry(entry[0], entry[1], entry[2]))
+    entries = entries.length ? entries : [this.makeEntry()]
+
+    this.setState({
+      rowData: entries,
+      showRows: true
+    })
+  }
+
+  addPerson() {
+    this.setState({
+      rowData: [...this.state.rowData, this.makeEntry()]
+    })
+  }
+
   changeRowCount(e) {
     const val = e.target.value
     const len = this.state.rowData.length
 
     if (val < len) {
-       if (window.confirm(`caution: this will remove ${len - val} row(s)!`)) {
-         this.setState({
-           rowData: this.state.rowData.filter((row, i) => i < val)
-         })
-       }
+      if (window.confirm(`caution: this will remove ${len - val} row(s)!`)) {
+        this.setState({
+          rowData: this.state.rowData.filter((row, i) => i < val)
+        })
+      }
     } else {
       let diff = val - len
       let newRows = []
@@ -56,47 +77,6 @@ class App extends React.Component {
         rowData: [...this.state.rowData, ...newRows]
       })
     }
-  }
-
-  options() {
-    let o = []
-    for (let i = 1; i <= this.optionsCount; i++) {
-      if (i === this.state.rowData.length) {
-        o.push(<option key={i} defaultValue={i}>{i}</option>)
-      } else {
-        o.push(<option key={i} value={i}>{i}</option>)
-      }
-    }
-    return o
-  }
-
-  toggleView() {
-    this.setState({
-      showRows: !this.state.showRows
-    })
-  }
-
-  addPerson() {
-    this.setState({
-      rowData: [...this.state.rowData, this.makeEntry()]
-    })
-  }
-
-  makeRows() {
-    return this.state.rowData.map((row, i) => {
-      return <PersonRow
-        change={this.onInputChange}
-        count={i}
-        key={row.id}
-        person={row}
-        remove={this.removeRow} />
-    })
-  }
-
-  removeRow(e) {
-    this.setState({
-      rowData: this.state.rowData.filter(row => row.id !== e.target.dataset.id)
-    })
   }
 
   onInputChange({ target }) {
@@ -117,18 +97,27 @@ class App extends React.Component {
     })
   }
 
-  addPeople() {
-    const val = this.textarea.current.value
-    const split = val.indexOf('	') > -1 ? '	' : val.indexOf(',') > -1 ? ',' : ' '
-    let entries = val.split('\n').map(p => p.split(split))
-    // remove arrays of all empty values
-    entries = entries.filter(entry => entry[0] || entry[1] || entry[2])
-    entries = entries.map(entry => this.makeEntry(entry[0], entry[1], entry[2]))
-    entries = entries.length ? entries : [this.makeEntry()]
+  options() {
+    let o = []
+    for (let i = 1; i <= this.optionsCount; i++) {
+      if (i === this.state.rowData.length) {
+        o.push(<option key={i} defaultValue={i}>{i}</option>)
+      } else {
+        o.push(<option key={i} value={i}>{i}</option>)
+      }
+    }
+    return o
+  }
 
+  removeRow(e) {
     this.setState({
-      rowData: entries,
-      showRows: true
+      rowData: this.state.rowData.filter(row => row.id !== e.target.dataset.id)
+    })
+  }
+
+  toggleView() {
+    this.setState({
+      showRows: !this.state.showRows
     })
   }
 
@@ -141,7 +130,12 @@ class App extends React.Component {
               select={<Select change={this.changeRowCount} count={this.optionsCount} active={this.state.rowData.length} />}
               addPerson={this.addPerson}
               toggleView={this.toggleView}>
-              {this.makeRows()}
+              {this.state.rowData.map((row, i) => <PersonRow
+                change={this.onInputChange}
+                count={i}
+                key={row.id}
+                person={row}
+                remove={this.removeRow} />)}
             </ScreenRows> :
             <ScreenPaste textarea={this.textarea} toggle={this.toggleView} add={this.addPeople} />
         }
