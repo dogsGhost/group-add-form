@@ -61,7 +61,9 @@ class App extends React.Component {
     const len = this.state.rowData.length
 
     if (val < len) {
-      if (window.confirm(`caution: this will remove ${len - val} row(s)!`)) {
+      const count = len - val
+      const msg = `Warning! This will remove the last ${count} row${count > 1 ? 's' : ''}!`
+      if (window.confirm(msg)) {
         this.setState({
           rowData: this.state.rowData.filter((row, i) => i < val)
         })
@@ -95,18 +97,6 @@ class App extends React.Component {
     this.setState({
       rowData: filtered
     })
-  }
-
-  options() {
-    let o = []
-    for (let i = 1; i <= this.optionsCount; i++) {
-      if (i === this.state.rowData.length) {
-        o.push(<option key={i} defaultValue={i}>{i}</option>)
-      } else {
-        o.push(<option key={i} value={i}>{i}</option>)
-      }
-    }
-    return o
   }
 
   removeRow(e) {
