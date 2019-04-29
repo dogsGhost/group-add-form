@@ -119,7 +119,7 @@ class App extends React.Component {
 
   addPeople() {
     const val = this.textarea.current.value
-    const split = val.indexOf('	') > -1 ? '	' : ' '
+    const split = val.indexOf('	') > -1 ? '	' : val.indexOf(',') > -1 ? ',' : ' '
     let entries = val.split('\n').map(p => p.split(split))
     // remove arrays of all empty values
     entries = entries.filter(entry => entry[0] || entry[1] || entry[2])
