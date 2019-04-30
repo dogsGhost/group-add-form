@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.e528df5f.chunk.css",
-    "main.js": "/static/js/main.6add7cad.chunk.js",
-    "main.js.map": "/static/js/main.6add7cad.chunk.js.map",
-    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
-    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
-    "static/js/2.56bd1bbe.chunk.js": "/static/js/2.56bd1bbe.chunk.js",
-    "static/js/2.56bd1bbe.chunk.js.map": "/static/js/2.56bd1bbe.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.8132dacc3af180463615c6cf45c94287.js": "/precache-manifest.8132dacc3af180463615c6cf45c94287.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.e528df5f.chunk.css.map": "/static/css/main.e528df5f.chunk.css.map"
+    "main.css": "/group-add-form/static/css/main.e528df5f.chunk.css",
+    "main.js": "/group-add-form/static/js/main.df624a98.chunk.js",
+    "main.js.map": "/group-add-form/static/js/main.df624a98.chunk.js.map",
+    "runtime~main.js": "/group-add-form/static/js/runtime~main.47ae29ce.js",
+    "runtime~main.js.map": "/group-add-form/static/js/runtime~main.47ae29ce.js.map",
+    "static/js/2.56bd1bbe.chunk.js": "/group-add-form/static/js/2.56bd1bbe.chunk.js",
+    "static/js/2.56bd1bbe.chunk.js.map": "/group-add-form/static/js/2.56bd1bbe.chunk.js.map",
+    "index.html": "/group-add-form/index.html",
+    "precache-manifest.59a4737d2ec169db28954e2148259594.js": "/group-add-form/precache-manifest.59a4737d2ec169db28954e2148259594.js",
+    "service-worker.js": "/group-add-form/service-worker.js",
+    "static/css/main.e528df5f.chunk.css.map": "/group-add-form/static/css/main.e528df5f.chunk.css.map"
   }
 }
