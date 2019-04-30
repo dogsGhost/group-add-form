@@ -1,6 +1,7 @@
 {
-  "name": "group-reg",
+  "name": "group-add-form",
   "version": "0.2.0",
+  "homepage" : "http://myname.github.io/group-add-form",
   "private": true,
   "dependencies": {
     "react": "^16.8.6",
